@@ -4,5 +4,33 @@ Tweet,Toot,ニュースや画像、気づかなければ一瞬で流れてしま
 これが目的です。私にとっては天使を捕まえるような物、になればいいと思っています。  
 まだまだ作り出して間もないですが、時間をかけて良いものにしていきます。
 
-# NOW PRINTING.
-現在初回コミット準備中。
+## Roadmap
+### STEP1.(今ここ)
+Mastodonクライアントとして利用するための基本機能の実装
+1. Mastodonインスタンスにログインする機能の実装
+2. Mastodonのタイムラインをストリーミングする機能の実装
+3. MastodonのRESTAPIを利用した各種機能の実装
+
+### STEP2.
+端末へのデータ保存、検索、閲覧フィルタ機能の実装
+1. Mastodonのトゥート、Mediaのお気に入り登録（非API機能）
+2. Mastodonのタイムラインのストリーミング絞り込み機能（非API機能）
+
+### STEP3.
+準備中。
+
+## Features
+絶賛制作中。
+
+## Requirement
+
+* Android 5.0 Lollipop以降の端末.
+
+## Licence
+
+[MIT](https://github.com/npdess/mining/blob/master/LICENSE)
+
+## Author
+
+[Ange (npdess)](https://github.com/npdess)
+
