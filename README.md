@@ -26,22 +26,16 @@ Mastodonクライアントとして利用するための基本機能の実装
 準備中。
 
 ## Features
-準備中。
+絶賛制作中。
 
 ## Requirement
 
 * Android 5.0 Lollipop以降の端末.
 
-## Usage
-準備中。
-
-## Install
-準備中。
-
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+[MIT](https://github.com/npdess/mining/blob/master/LICENSE)
 
 ## Author
 
-[npdess](https://github.com/npdess)
+[Ange (npdess)](https://github.com/npdess)
