@@ -1,10 +1,4 @@
-Angel Mining
-====
-
-View and Collection for Text and Images like a Angel.
-
-## Description
-
+# Angel Mining.
 流れる情報の海から自分の嗜好に合ったものを掘り出すためのツール。  
 Tweet,Toot,ニュースや画像、気づかなければ一瞬で流れてしまう情報を捕まえる。  
 これが目的です。私にとっては天使を捕まえるような物、になればいいと思っています。  
@@ -39,3 +33,4 @@ Mastodonクライアントとして利用するための基本機能の実装
 ## Author
 
 [Ange (npdess)](https://github.com/npdess)
+
