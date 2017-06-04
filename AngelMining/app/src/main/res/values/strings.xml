@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">AngelMining</string>
+    <string name="action_settings">Settings</string>
+    <!-- mastodon -->
+    <string name="action_start_streaming_pub">Start Streaming Pub</string>
+    <string name="action_stop_streaming_pub">Stop Streaming Pub</string>
+    <string name="action_clear_timeline">Clear Timeline</string>
+
+    <!-- login -->
+    <string name="next">次へ</string>
+    <string name="input_mastodon_instance">ログインするマストドンインスタンスを入力してください。\nいくつかのインスタンスはオートコンプリートでの入力が可能です。</string>
+    <string name="input_mastodon_token">2. MastodonAPIトークンを入力</string>
+    <string name="start">始める</string>
+    <string name="login">ログインする</string>
+    <string name="login_mastodon_completed">マストドンインスタンスへの登録処理が完了しました。</string>
+    <string name="login_mastodon_invalid">マストドンインスタンスへの登録処理をキャンセルしました。</string>
+    <string name="login_mastodon_result">インスタンス：%1$s</string>
+
+    <string name="title_login_mastodon">AngelMining: Login</string>
+    <string name="title_main">AngelMining: Streaming Demo</string>
+
+    <string name="message_streaming_empty">\n\n説明：\n\n緑色の再生ボタンをタップするか、画面上で上から下にスワイプするとストリーミングを開始します。\n\n赤色の停止ボタンをタップするとストリーミングが停止します。\n\n青いボタンを押すと画面上のタイムラインをクリアします。\n\nタイムラインは画面上に最大100件表示されます。100件を超えた場合は古いタイムラインから順に非表示になります。</string>
+</resources>

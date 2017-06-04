@@ -1,0 +1,32 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://repo.mycompany.com/maven2" }
+        maven { url "https://repo.commonsware.com.s3.amazonaws.com" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.2'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "http://repo.mycompany.com/maven2" }
+        maven { url "https://repo.commonsware.com.s3.amazonaws.com" }
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
