@@ -4,6 +4,11 @@ Tweet,Toot,ニュースや画像、気づかなければ一瞬で流れてしま
 これが目的です。私にとっては天使を捕まえるような物、になればいいと思っています。  
 まだまだ作り出して間もないですが、時間をかけて良いものにしていきます。
 
+## Now Preview
+|LOGIN|DEMO TOP|STREAMING DEMO|
+|---|---|---|
+|<img src="https://raw.githubusercontent.com/npdess/mining/develop/IMAGES/LOGIN.png" width="240px"/>|<img src="https://raw.githubusercontent.com/npdess/mining/develop/IMAGES/DEMO_TOP.png" width="240px"/>|<img src="https://raw.githubusercontent.com/npdess/mining/develop/IMAGES/STREAMING_ACTIVE.png" width="240px"/>|
+
 ## Roadmap
 ### STEP1.(今ここ)
 Mastodonクライアントとして利用するための基本機能の実装
