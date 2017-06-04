@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_gravity="center_vertical"
+              android:gravity="center_vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <Button
+        android:id="@+id/button_go_mastodon"
+        android:enabled="false"
+        tools:text="始める"
+        android:text="@string/start"
+        android:textSize="18sp"
+        android:textColor="@android:color/primary_text_dark"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal|center_vertical"/>
+
+    <Button
+        android:id="@+id/button_login"
+        tools:text="ログインする"
+        android:text="@string/login"
+        android:textSize="18sp"
+        android:textColor="@android:color/primary_text_dark"
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal|center_vertical"/>
+</LinearLayout>

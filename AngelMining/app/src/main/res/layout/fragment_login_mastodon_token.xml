@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/label_mastodon_token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/edit_mastodon_token"
+        android:textSize="16sp"
+        android:text="@string/input_mastodon_token"
+        tools:text="2. MastodonAPIトークンを入力"/>
+
+    <EditText
+        android:id="@+id/edit_mastodon_token"
+        android:inputType="textUri"
+        style="@android:style/Widget.AutoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:hint="Mastodon APIトークンを入力"
+        android:minHeight="30dp"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"/>
+
+    <Button android:id="@+id/button_next_mastodon_token"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:textColor="@android:color/primary_text_dark"
+        android:background="@android:color/holo_blue_dark"
+            android:text="次へ"
+        tools:text="次へ"/>
+
+</LinearLayout>

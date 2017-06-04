@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/label_mastodon_domain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/edit_mastodon_domain"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/input_mastodon_instance"
+        tools:text="@string/input_mastodon_instance"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/edit_mastodon_domain"
+        android:inputType="textUri"
+        android:textSize="20sp"
+        style="@android:style/Widget.AutoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:hint="例：https://mstdn.jp/"
+        android:minHeight="30dp"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:id="@+id/button_next_mastodon_domain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:textSize="18sp"
+        android:textColor="@android:color/primary_text_dark"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/next"
+        tools:text="次へ"/>
+</LinearLayout>

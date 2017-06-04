@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.text.Html"/>
+        <variable
+            name="status"
+            type="jp.gr.java_conf.ange.mastodon.model.Status" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/display_name"
+            android:textColor="@color/md_white_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical|start"
+            android:padding="2dp"
+            android:textSize="16sp"
+
+            tools:text="MASTODON NAME"
+            android:text="@{status.account.displayName}"/>
+        <TextView
+            android:id="@+id/user_name"
+            android:textColor="@color/md_grey_400"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/display_name"
+            android:gravity="center_vertical"
+            android:padding="2dp"
+            android:textSize="16sp"
+
+            tools:text="MASTODON NAME"
+            android:text="@{status.account.username}"/>
+        <TextView
+            android:id="@+id/created_at"
+            android:textColor="@color/md_yellow_800"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/display_name"
+            android:gravity="center_vertical|end"
+            android:padding="2dp"
+
+            tools:text="2017/06/01 木 12:00:00"
+            app:localTime="@{status.createdAt}"/>
+        <TextView
+            android:id="@+id/content"
+            android:textColor="@color/md_white_1000"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/created_at"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:minHeight="40dp"
+
+            tools:text="あああああああああああああああああああ"
+            android:text="@{Html.fromHtml(status.content)}"/>
+    </RelativeLayout>
+</layout>
