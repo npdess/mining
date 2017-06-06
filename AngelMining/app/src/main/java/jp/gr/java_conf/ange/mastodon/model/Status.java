@@ -33,7 +33,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
     "mentions",
     "tags",
     "application",
-    "pixiv_cards"
+    "pixiv_cards",
+    "language"
 })
 public class Status {
 
@@ -174,6 +175,13 @@ public class Status {
     @JsonProperty("pixiv_cards")
     @JsonPropertyDescription("masutodon original?")
     private List<Object> pixivCards = new ArrayList<Object>();
+    /**
+     * language : default=en
+     *
+     */
+    @JsonProperty("language")
+    @JsonPropertyDescription("anguage : default=en")
+    private String language;
 
     /**
      * The ID of the status
@@ -537,6 +545,26 @@ public class Status {
         this.pixivCards = pixivCards;
     }
 
+    /**
+     * language : default=en
+     *
+     */
+    @JsonProperty("language")
+    @JsonPropertyDescription("anguage : default=en")
+    public String getLanguage() {
+        return language;
+    }
+
+    /**
+     * language : default=en
+     *
+     */
+    @JsonProperty("language")
+    @JsonPropertyDescription("anguage : default=en")
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -544,7 +572,7 @@ public class Status {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(id).append(uri).append(url).append(account).append(inReplyToId).append(inReplyToAccountId).append(reblog).append(content).append(createdAt).append(reblogsCount).append(favouritesCount).append(reblogged).append(favourited).append(sensitive).append(spoilerText).append(visibility).append(mediaAttachments).append(mentions).append(tags).append(application).append(pixivCards).toHashCode();
+        return new HashCodeBuilder().append(id).append(uri).append(url).append(account).append(inReplyToId).append(inReplyToAccountId).append(reblog).append(content).append(createdAt).append(reblogsCount).append(favouritesCount).append(reblogged).append(favourited).append(sensitive).append(spoilerText).append(visibility).append(mediaAttachments).append(mentions).append(tags).append(application).append(pixivCards).append(language).toHashCode();
     }
 
     @Override
@@ -556,7 +584,7 @@ public class Status {
             return false;
         }
         Status rhs = ((Status) other);
-        return new EqualsBuilder().append(id, rhs.id).append(uri, rhs.uri).append(url, rhs.url).append(account, rhs.account).append(inReplyToId, rhs.inReplyToId).append(inReplyToAccountId, rhs.inReplyToAccountId).append(reblog, rhs.reblog).append(content, rhs.content).append(createdAt, rhs.createdAt).append(reblogsCount, rhs.reblogsCount).append(favouritesCount, rhs.favouritesCount).append(reblogged, rhs.reblogged).append(favourited, rhs.favourited).append(sensitive, rhs.sensitive).append(spoilerText, rhs.spoilerText).append(visibility, rhs.visibility).append(mediaAttachments, rhs.mediaAttachments).append(mentions, rhs.mentions).append(tags, rhs.tags).append(application, rhs.application).append(pixivCards, rhs.pixivCards).isEquals();
+        return new EqualsBuilder().append(id, rhs.id).append(uri, rhs.uri).append(url, rhs.url).append(account, rhs.account).append(inReplyToId, rhs.inReplyToId).append(inReplyToAccountId, rhs.inReplyToAccountId).append(reblog, rhs.reblog).append(content, rhs.content).append(createdAt, rhs.createdAt).append(reblogsCount, rhs.reblogsCount).append(favouritesCount, rhs.favouritesCount).append(reblogged, rhs.reblogged).append(favourited, rhs.favourited).append(sensitive, rhs.sensitive).append(spoilerText, rhs.spoilerText).append(visibility, rhs.visibility).append(mediaAttachments, rhs.mediaAttachments).append(mentions, rhs.mentions).append(tags, rhs.tags).append(application, rhs.application).append(pixivCards, rhs.pixivCards).append(language, rhs.language).isEquals();
     }
 
 }
