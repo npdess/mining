@@ -3,6 +3,8 @@ package jp.gr.java_conf.ange.mastodon.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
@@ -12,77 +14,38 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) // DEBUG
 @JsonPropertyOrder({
-    "id",
-    "uri",
-    "url",
     "account",
-    "in_reply_to_id",
-    "in_reply_to_account_id",
-    "reblog",
+    "application",
     "content",
     "created_at",
-    "reblogs_count",
-    "favourites_count",
-    "reblogged",
     "favourited",
-    "sensitive",
-    "spoiler_text",
-    "visibility",
+    "favourites_count",
+    "id",
+    "in_reply_to_account_id",
+    "in_reply_to_id",
+    "language",
     "media_attachments",
     "mentions",
-    "tags",
-    "application",
+    "pinned",
     "pixiv_cards",
-    "language",
-     "pinned"
+    "reblog",
+    "reblogged",
+    "reblogs_count",
+    "sensitive",
+    "spoiler_text",
+    "tags",
+    "uri",
+    "url",
+    "visibility"
 })
 public class Status {
 
-    /**
-     * The ID of the status
-     * 
-     */
-    @JsonProperty("id")
-    @JsonPropertyDescription("The ID of the status")
-    private Integer id;
-    /**
-     * A Fediverse-unique resource ID
-     * 
-     */
-    @JsonProperty("uri")
-    @JsonPropertyDescription("A Fediverse-unique resource ID")
-    private String uri;
-    /**
-     * URL to the status page (can be remote)
-     * 
-     */
-    @JsonProperty("url")
-    @JsonPropertyDescription("URL to the status page (can be remote)")
-    private String url;
     @JsonProperty("account")
     private Account account;
-    /**
-     * null or the ID of the status it replies to
-     * 
-     */
-    @JsonProperty("in_reply_to_id")
-    @JsonPropertyDescription("null or the ID of the status it replies to")
-    private String inReplyToId;
-    /**
-     * null or the ID of the account it replies to
-     * 
-     */
-    @JsonProperty("in_reply_to_account_id")
-    @JsonPropertyDescription("null or the ID of the account it replies to")
-    private String inReplyToAccountId;
-    /**
-     * null or the reblogged Status
-     * 
-     */
-    @JsonProperty("reblog")
-    @JsonPropertyDescription("null or the reblogged Status")
-    private String reblog;
+    @JsonProperty("application")
+    private Application application;
     /**
      * Body of the status; this will contain HTML (remote HTML already sanitized)
      * 
@@ -98,12 +61,12 @@ public class Status {
     @JsonPropertyDescription("The time the status was created")
     private String createdAt;
     /**
-     * The number of reblogs for the status
+     * Whether the authenticated user has favourited the status
      * 
      */
-    @JsonProperty("reblogs_count")
-    @JsonPropertyDescription("The number of reblogs for the status")
-    private Integer reblogsCount;
+    @JsonProperty("favourited")
+    @JsonPropertyDescription("Whether the authenticated user has favourited the status")
+    private String favourited;
     /**
      * The number of favourites for the status
      * 
@@ -112,40 +75,33 @@ public class Status {
     @JsonPropertyDescription("The number of favourites for the status")
     private Integer favouritesCount;
     /**
-     * Whether the authenticated user has reblogged the status
+     * The ID of the status
      * 
      */
-    @JsonProperty("reblogged")
-    @JsonPropertyDescription("Whether the authenticated user has reblogged the status")
-    private String reblogged;
+    @JsonProperty("id")
+    @JsonPropertyDescription("The ID of the status")
+    private Integer id;
     /**
-     * Whether the authenticated user has favourited the status
+     * null or the ID of the account it replies to
      * 
      */
-    @JsonProperty("favourited")
-    @JsonPropertyDescription("Whether the authenticated user has favourited the status")
-    private String favourited;
+    @JsonProperty("in_reply_to_account_id")
+    @JsonPropertyDescription("null or the ID of the account it replies to")
+    private String inReplyToAccountId;
     /**
-     * Whether media attachments should be hidden by default
+     * null or the ID of the status it replies to
      * 
      */
-    @JsonProperty("sensitive")
-    @JsonPropertyDescription("Whether media attachments should be hidden by default")
-    private Boolean sensitive;
+    @JsonProperty("in_reply_to_id")
+    @JsonPropertyDescription("null or the ID of the status it replies to")
+    private String inReplyToId;
     /**
-     * If not empty, warning text that should be displayed before the actual content
+     * The detected language for the status (default en)
      * 
      */
-    @JsonProperty("spoiler_text")
-    @JsonPropertyDescription("If not empty, warning text that should be displayed before the actual content")
-    private String spoilerText;
-    /**
-     * One of public, unlisted, private, direct
-     * 
-     */
-    @JsonProperty("visibility")
-    @JsonPropertyDescription("One of public, unlisted, private, direct")
-    private String visibility;
+    @JsonProperty("language")
+    @JsonPropertyDescription("The detected language for the status (default en)")
+    private String language;
     /**
      * An array of Attachments
      * 
@@ -161,14 +117,12 @@ public class Status {
     @JsonPropertyDescription("An array of Mentions")
     private List<Mention> mentions = new ArrayList<Mention>();
     /**
-     * An array of Tags
+     * pinterest pinned?
      * 
      */
-    @JsonProperty("tags")
-    @JsonPropertyDescription("An array of Tags")
-    private List<Tag> tags = new ArrayList<Tag>();
-    @JsonProperty("application")
-    private Application application;
+    @JsonProperty("pinned")
+    @JsonPropertyDescription("pinterest pinned?")
+    private Boolean pinned;
     /**
      * masutodon original?
      * 
@@ -177,73 +131,68 @@ public class Status {
     @JsonPropertyDescription("masutodon original?")
     private List<Object> pixivCards = new ArrayList<Object>();
     /**
-     * language : default=en
-     *
-     */
-    @JsonProperty("language")
-    @JsonPropertyDescription("anguage : default=en")
-    private String language;
-    /**
-     * pinned
-     *
-     */
-    @JsonProperty("pinned")
-    @JsonPropertyDescription("pinned")
-    private boolean pinned;
-
-    /**
-     * The ID of the status
+     * null or the reblogged Status
      * 
      */
-    @JsonProperty("id")
-    public Integer getId() {
-        return id;
-    }
-
+    @JsonProperty("reblog")
+    @JsonPropertyDescription("null or the reblogged Status")
+    private String reblog;
     /**
-     * The ID of the status
+     * Whether the authenticated user has reblogged the status
      * 
      */
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @JsonProperty("reblogged")
+    @JsonPropertyDescription("Whether the authenticated user has reblogged the status")
+    private String reblogged;
+    /**
+     * The number of reblogs for the status
+     * 
+     */
+    @JsonProperty("reblogs_count")
+    @JsonPropertyDescription("The number of reblogs for the status")
+    private Integer reblogsCount;
+    /**
+     * Whether media attachments should be hidden by default
+     * 
+     */
+    @JsonProperty("sensitive")
+    @JsonPropertyDescription("Whether media attachments should be hidden by default")
+    private Boolean sensitive;
+    /**
+     * If not empty, warning text that should be displayed before the actual content
+     * 
+     */
+    @JsonProperty("spoiler_text")
+    @JsonPropertyDescription("If not empty, warning text that should be displayed before the actual content")
+    private String spoilerText;
+    /**
+     * An array of Tags
+     * 
+     */
+    @JsonProperty("tags")
+    @JsonPropertyDescription("An array of Tags")
+    private List<Tag> tags = new ArrayList<Tag>();
     /**
      * A Fediverse-unique resource ID
      * 
      */
     @JsonProperty("uri")
-    public String getUri() {
-        return uri;
-    }
-
-    /**
-     * A Fediverse-unique resource ID
-     * 
-     */
-    @JsonProperty("uri")
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
-
+    @JsonPropertyDescription("A Fediverse-unique resource ID")
+    private String uri;
     /**
      * URL to the status page (can be remote)
      * 
      */
     @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
+    @JsonPropertyDescription("URL to the status page (can be remote)")
+    private String url;
     /**
-     * URL to the status page (can be remote)
+     * One of public, unlisted, private, direct
      * 
      */
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
+    @JsonProperty("visibility")
+    @JsonPropertyDescription("One of public, unlisted, private, direct")
+    private String visibility;
 
     @JsonProperty("account")
     public Account getAccount() {
@@ -255,58 +204,14 @@ public class Status {
         this.account = account;
     }
 
-    /**
-     * null or the ID of the status it replies to
-     * 
-     */
-    @JsonProperty("in_reply_to_id")
-    public String getInReplyToId() {
-        return inReplyToId;
+    @JsonProperty("application")
+    public Application getApplication() {
+        return application;
     }
 
-    /**
-     * null or the ID of the status it replies to
-     * 
-     */
-    @JsonProperty("in_reply_to_id")
-    public void setInReplyToId(String inReplyToId) {
-        this.inReplyToId = inReplyToId;
-    }
-
-    /**
-     * null or the ID of the account it replies to
-     * 
-     */
-    @JsonProperty("in_reply_to_account_id")
-    public String getInReplyToAccountId() {
-        return inReplyToAccountId;
-    }
-
-    /**
-     * null or the ID of the account it replies to
-     * 
-     */
-    @JsonProperty("in_reply_to_account_id")
-    public void setInReplyToAccountId(String inReplyToAccountId) {
-        this.inReplyToAccountId = inReplyToAccountId;
-    }
-
-    /**
-     * null or the reblogged Status
-     * 
-     */
-    @JsonProperty("reblog")
-    public String getReblog() {
-        return reblog;
-    }
-
-    /**
-     * null or the reblogged Status
-     * 
-     */
-    @JsonProperty("reblog")
-    public void setReblog(String reblog) {
-        this.reblog = reblog;
+    @JsonProperty("application")
+    public void setApplication(Application application) {
+        this.application = application;
     }
 
     /**
@@ -346,21 +251,21 @@ public class Status {
     }
 
     /**
-     * The number of reblogs for the status
+     * Whether the authenticated user has favourited the status
      * 
      */
-    @JsonProperty("reblogs_count")
-    public Integer getReblogsCount() {
-        return reblogsCount;
+    @JsonProperty("favourited")
+    public String getFavourited() {
+        return favourited;
     }
 
     /**
-     * The number of reblogs for the status
+     * Whether the authenticated user has favourited the status
      * 
      */
-    @JsonProperty("reblogs_count")
-    public void setReblogsCount(Integer reblogsCount) {
-        this.reblogsCount = reblogsCount;
+    @JsonProperty("favourited")
+    public void setFavourited(String favourited) {
+        this.favourited = favourited;
     }
 
     /**
@@ -382,93 +287,75 @@ public class Status {
     }
 
     /**
-     * Whether the authenticated user has reblogged the status
+     * The ID of the status
      * 
      */
-    @JsonProperty("reblogged")
-    public String getReblogged() {
-        return reblogged;
+    @JsonProperty("id")
+    public Integer getId() {
+        return id;
     }
 
     /**
-     * Whether the authenticated user has reblogged the status
+     * The ID of the status
      * 
      */
-    @JsonProperty("reblogged")
-    public void setReblogged(String reblogged) {
-        this.reblogged = reblogged;
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /**
-     * Whether the authenticated user has favourited the status
+     * null or the ID of the account it replies to
      * 
      */
-    @JsonProperty("favourited")
-    public String getFavourited() {
-        return favourited;
+    @JsonProperty("in_reply_to_account_id")
+    public String getInReplyToAccountId() {
+        return inReplyToAccountId;
     }
 
     /**
-     * Whether the authenticated user has favourited the status
+     * null or the ID of the account it replies to
      * 
      */
-    @JsonProperty("favourited")
-    public void setFavourited(String favourited) {
-        this.favourited = favourited;
+    @JsonProperty("in_reply_to_account_id")
+    public void setInReplyToAccountId(String inReplyToAccountId) {
+        this.inReplyToAccountId = inReplyToAccountId;
     }
 
     /**
-     * Whether media attachments should be hidden by default
+     * null or the ID of the status it replies to
      * 
      */
-    @JsonProperty("sensitive")
-    public Boolean getSensitive() {
-        return sensitive;
+    @JsonProperty("in_reply_to_id")
+    public String getInReplyToId() {
+        return inReplyToId;
     }
 
     /**
-     * Whether media attachments should be hidden by default
+     * null or the ID of the status it replies to
      * 
      */
-    @JsonProperty("sensitive")
-    public void setSensitive(Boolean sensitive) {
-        this.sensitive = sensitive;
+    @JsonProperty("in_reply_to_id")
+    public void setInReplyToId(String inReplyToId) {
+        this.inReplyToId = inReplyToId;
     }
 
     /**
-     * If not empty, warning text that should be displayed before the actual content
+     * The detected language for the status (default en)
      * 
      */
-    @JsonProperty("spoiler_text")
-    public String getSpoilerText() {
-        return spoilerText;
+    @JsonProperty("language")
+    public String getLanguage() {
+        return language;
     }
 
     /**
-     * If not empty, warning text that should be displayed before the actual content
+     * The detected language for the status (default en)
      * 
      */
-    @JsonProperty("spoiler_text")
-    public void setSpoilerText(String spoilerText) {
-        this.spoilerText = spoilerText;
-    }
-
-    /**
-     * One of public, unlisted, private, direct
-     * 
-     */
-    @JsonProperty("visibility")
-    public String getVisibility() {
-        return visibility;
-    }
-
-    /**
-     * One of public, unlisted, private, direct
-     * 
-     */
-    @JsonProperty("visibility")
-    public void setVisibility(String visibility) {
-        this.visibility = visibility;
+    @JsonProperty("language")
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     /**
@@ -508,31 +395,21 @@ public class Status {
     }
 
     /**
-     * An array of Tags
+     * pinterest pinned?
      * 
      */
-    @JsonProperty("tags")
-    public List<Tag> getTags() {
-        return tags;
+    @JsonProperty("pinned")
+    public Boolean getPinned() {
+        return pinned;
     }
 
     /**
-     * An array of Tags
+     * pinterest pinned?
      * 
      */
-    @JsonProperty("tags")
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
-
-    @JsonProperty("application")
-    public Application getApplication() {
-        return application;
-    }
-
-    @JsonProperty("application")
-    public void setApplication(Application application) {
-        this.application = application;
+    @JsonProperty("pinned")
+    public void setPinned(Boolean pinned) {
+        this.pinned = pinned;
     }
 
     /**
@@ -554,40 +431,165 @@ public class Status {
     }
 
     /**
-     * language : default=en
-     *
+     * null or the reblogged Status
+     * 
      */
-    @JsonProperty("language")
-    public String getLanguage() {
-        return language;
+    @JsonProperty("reblog")
+    public String getReblog() {
+        return reblog;
     }
 
     /**
-     * language : default=en
-     *
+     * null or the reblogged Status
+     * 
      */
-    @JsonProperty("language")
-    @JsonPropertyDescription("anguage : default=en")
-    public void setLanguage(String language) {
-        this.language = language;
+    @JsonProperty("reblog")
+    public void setReblog(String reblog) {
+        this.reblog = reblog;
     }
 
     /**
-     * pinned
-     *
+     * Whether the authenticated user has reblogged the status
+     * 
      */
-    @JsonProperty("pinned")
-    public boolean isPinned() {
-        return pinned;
+    @JsonProperty("reblogged")
+    public String getReblogged() {
+        return reblogged;
     }
 
     /**
-     * pinned
-     *
+     * Whether the authenticated user has reblogged the status
+     * 
      */
-    @JsonProperty("pinned")
-    public void setPinned(boolean pinned) {
-        this.pinned = pinned;
+    @JsonProperty("reblogged")
+    public void setReblogged(String reblogged) {
+        this.reblogged = reblogged;
+    }
+
+    /**
+     * The number of reblogs for the status
+     * 
+     */
+    @JsonProperty("reblogs_count")
+    public Integer getReblogsCount() {
+        return reblogsCount;
+    }
+
+    /**
+     * The number of reblogs for the status
+     * 
+     */
+    @JsonProperty("reblogs_count")
+    public void setReblogsCount(Integer reblogsCount) {
+        this.reblogsCount = reblogsCount;
+    }
+
+    /**
+     * Whether media attachments should be hidden by default
+     * 
+     */
+    @JsonProperty("sensitive")
+    public Boolean getSensitive() {
+        return sensitive;
+    }
+
+    /**
+     * Whether media attachments should be hidden by default
+     * 
+     */
+    @JsonProperty("sensitive")
+    public void setSensitive(Boolean sensitive) {
+        this.sensitive = sensitive;
+    }
+
+    /**
+     * If not empty, warning text that should be displayed before the actual content
+     * 
+     */
+    @JsonProperty("spoiler_text")
+    public String getSpoilerText() {
+        return spoilerText;
+    }
+
+    /**
+     * If not empty, warning text that should be displayed before the actual content
+     * 
+     */
+    @JsonProperty("spoiler_text")
+    public void setSpoilerText(String spoilerText) {
+        this.spoilerText = spoilerText;
+    }
+
+    /**
+     * An array of Tags
+     * 
+     */
+    @JsonProperty("tags")
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    /**
+     * An array of Tags
+     * 
+     */
+    @JsonProperty("tags")
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * A Fediverse-unique resource ID
+     * 
+     */
+    @JsonProperty("uri")
+    public String getUri() {
+        return uri;
+    }
+
+    /**
+     * A Fediverse-unique resource ID
+     * 
+     */
+    @JsonProperty("uri")
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    /**
+     * URL to the status page (can be remote)
+     * 
+     */
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * URL to the status page (can be remote)
+     * 
+     */
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * One of public, unlisted, private, direct
+     * 
+     */
+    @JsonProperty("visibility")
+    public String getVisibility() {
+        return visibility;
+    }
+
+    /**
+     * One of public, unlisted, private, direct
+     * 
+     */
+    @JsonProperty("visibility")
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
     }
 
     @Override
@@ -597,7 +599,7 @@ public class Status {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(id).append(uri).append(url).append(account).append(inReplyToId).append(inReplyToAccountId).append(reblog).append(content).append(createdAt).append(reblogsCount).append(favouritesCount).append(reblogged).append(favourited).append(sensitive).append(spoilerText).append(visibility).append(mediaAttachments).append(mentions).append(tags).append(application).append(pixivCards).append(language).append(pinned).toHashCode();
+        return new HashCodeBuilder().append(account).append(application).append(content).append(createdAt).append(favourited).append(favouritesCount).append(id).append(inReplyToAccountId).append(inReplyToId).append(language).append(mediaAttachments).append(mentions).append(pinned).append(pixivCards).append(reblog).append(reblogged).append(reblogsCount).append(sensitive).append(spoilerText).append(tags).append(uri).append(url).append(visibility).toHashCode();
     }
 
     @Override
@@ -609,7 +611,7 @@ public class Status {
             return false;
         }
         Status rhs = ((Status) other);
-        return new EqualsBuilder().append(id, rhs.id).append(uri, rhs.uri).append(url, rhs.url).append(account, rhs.account).append(inReplyToId, rhs.inReplyToId).append(inReplyToAccountId, rhs.inReplyToAccountId).append(reblog, rhs.reblog).append(content, rhs.content).append(createdAt, rhs.createdAt).append(reblogsCount, rhs.reblogsCount).append(favouritesCount, rhs.favouritesCount).append(reblogged, rhs.reblogged).append(favourited, rhs.favourited).append(sensitive, rhs.sensitive).append(spoilerText, rhs.spoilerText).append(visibility, rhs.visibility).append(mediaAttachments, rhs.mediaAttachments).append(mentions, rhs.mentions).append(tags, rhs.tags).append(application, rhs.application).append(pixivCards, rhs.pixivCards).append(language, rhs.language).append(pinned, rhs.pinned).isEquals();
+        return new EqualsBuilder().append(account, rhs.account).append(application, rhs.application).append(content, rhs.content).append(createdAt, rhs.createdAt).append(favourited, rhs.favourited).append(favouritesCount, rhs.favouritesCount).append(id, rhs.id).append(inReplyToAccountId, rhs.inReplyToAccountId).append(inReplyToId, rhs.inReplyToId).append(language, rhs.language).append(mediaAttachments, rhs.mediaAttachments).append(mentions, rhs.mentions).append(pinned, rhs.pinned).append(pixivCards, rhs.pixivCards).append(reblog, rhs.reblog).append(reblogged, rhs.reblogged).append(reblogsCount, rhs.reblogsCount).append(sensitive, rhs.sensitive).append(spoilerText, rhs.spoilerText).append(tags, rhs.tags).append(uri, rhs.uri).append(url, rhs.url).append(visibility, rhs.visibility).isEquals();
     }
 
 }

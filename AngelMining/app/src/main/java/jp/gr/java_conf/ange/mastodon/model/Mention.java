@@ -11,27 +11,13 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "url",
-    "username",
     "acct",
-    "id"
+    "id",
+    "url",
+    "username"
 })
 public class Mention {
 
-    /**
-     * URL of user's profile (can be remote)
-     * 
-     */
-    @JsonProperty("url")
-    @JsonPropertyDescription("URL of user's profile (can be remote)")
-    private String url;
-    /**
-     * The username of the account
-     * 
-     */
-    @JsonProperty("username")
-    @JsonPropertyDescription("The username of the account")
-    private String username;
     /**
      * Equals username for local users, includes @domain for remote ones
      * 
@@ -46,42 +32,20 @@ public class Mention {
     @JsonProperty("id")
     @JsonPropertyDescription("Account ID")
     private Integer id;
-
     /**
      * URL of user's profile (can be remote)
      * 
      */
     @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    /**
-     * URL of user's profile (can be remote)
-     * 
-     */
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
+    @JsonPropertyDescription("URL of user's profile (can be remote)")
+    private String url;
     /**
      * The username of the account
      * 
      */
     @JsonProperty("username")
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * The username of the account
-     * 
-     */
-    @JsonProperty("username")
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    @JsonPropertyDescription("The username of the account")
+    private String username;
 
     /**
      * Equals username for local users, includes @domain for remote ones
@@ -119,6 +83,42 @@ public class Mention {
         this.id = id;
     }
 
+    /**
+     * URL of user's profile (can be remote)
+     * 
+     */
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * URL of user's profile (can be remote)
+     * 
+     */
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * The username of the account
+     * 
+     */
+    @JsonProperty("username")
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * The username of the account
+     * 
+     */
+    @JsonProperty("username")
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -126,7 +126,7 @@ public class Mention {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(url).append(username).append(acct).append(id).toHashCode();
+        return new HashCodeBuilder().append(acct).append(id).append(url).append(username).toHashCode();
     }
 
     @Override
@@ -138,7 +138,7 @@ public class Mention {
             return false;
         }
         Mention rhs = ((Mention) other);
-        return new EqualsBuilder().append(url, rhs.url).append(username, rhs.username).append(acct, rhs.acct).append(id, rhs.id).isEquals();
+        return new EqualsBuilder().append(acct, rhs.acct).append(id, rhs.id).append(url, rhs.url).append(username, rhs.username).isEquals();
     }
 
 }

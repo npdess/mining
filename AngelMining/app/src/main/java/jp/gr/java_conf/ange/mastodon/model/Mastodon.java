@@ -17,10 +17,18 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @JsonPropertyOrder({
     "account",
     "application",
-    "mention",
     "attachment",
-    "tag",
-    "status"
+    "card",
+    "context",
+    "error",
+    "instance",
+    "mention",
+    "notification",
+    "relationship",
+    "report",
+    "results",
+    "status",
+    "tag"
 })
 public class Mastodon {
 
@@ -28,14 +36,30 @@ public class Mastodon {
     private Account account;
     @JsonProperty("application")
     private Application application;
-    @JsonProperty("mention")
-    private Mention mention;
     @JsonProperty("attachment")
     private Attachment attachment;
-    @JsonProperty("tag")
-    private Tag tag;
+    @JsonProperty("card")
+    private Card card;
+    @JsonProperty("context")
+    private Context context;
+    @JsonProperty("error")
+    private Error error;
+    @JsonProperty("instance")
+    private Instance instance;
+    @JsonProperty("mention")
+    private Mention mention;
+    @JsonProperty("notification")
+    private Notification notification;
+    @JsonProperty("relationship")
+    private Relationship relationship;
+    @JsonProperty("report")
+    private Report report;
+    @JsonProperty("results")
+    private Results results;
     @JsonProperty("status")
     private Status status;
+    @JsonProperty("tag")
+    private Tag tag;
 
     @JsonProperty("account")
     public Account getAccount() {
@@ -57,16 +81,6 @@ public class Mastodon {
         this.application = application;
     }
 
-    @JsonProperty("mention")
-    public Mention getMention() {
-        return mention;
-    }
-
-    @JsonProperty("mention")
-    public void setMention(Mention mention) {
-        this.mention = mention;
-    }
-
     @JsonProperty("attachment")
     public Attachment getAttachment() {
         return attachment;
@@ -77,14 +91,94 @@ public class Mastodon {
         this.attachment = attachment;
     }
 
-    @JsonProperty("tag")
-    public Tag getTag() {
-        return tag;
+    @JsonProperty("card")
+    public Card getCard() {
+        return card;
     }
 
-    @JsonProperty("tag")
-    public void setTag(Tag tag) {
-        this.tag = tag;
+    @JsonProperty("card")
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    @JsonProperty("context")
+    public Context getContext() {
+        return context;
+    }
+
+    @JsonProperty("context")
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    @JsonProperty("error")
+    public Error getError() {
+        return error;
+    }
+
+    @JsonProperty("error")
+    public void setError(Error error) {
+        this.error = error;
+    }
+
+    @JsonProperty("instance")
+    public Instance getInstance() {
+        return instance;
+    }
+
+    @JsonProperty("instance")
+    public void setInstance(Instance instance) {
+        this.instance = instance;
+    }
+
+    @JsonProperty("mention")
+    public Mention getMention() {
+        return mention;
+    }
+
+    @JsonProperty("mention")
+    public void setMention(Mention mention) {
+        this.mention = mention;
+    }
+
+    @JsonProperty("notification")
+    public Notification getNotification() {
+        return notification;
+    }
+
+    @JsonProperty("notification")
+    public void setNotification(Notification notification) {
+        this.notification = notification;
+    }
+
+    @JsonProperty("relationship")
+    public Relationship getRelationship() {
+        return relationship;
+    }
+
+    @JsonProperty("relationship")
+    public void setRelationship(Relationship relationship) {
+        this.relationship = relationship;
+    }
+
+    @JsonProperty("report")
+    public Report getReport() {
+        return report;
+    }
+
+    @JsonProperty("report")
+    public void setReport(Report report) {
+        this.report = report;
+    }
+
+    @JsonProperty("results")
+    public Results getResults() {
+        return results;
+    }
+
+    @JsonProperty("results")
+    public void setResults(Results results) {
+        this.results = results;
     }
 
     @JsonProperty("status")
@@ -97,6 +191,16 @@ public class Mastodon {
         this.status = status;
     }
 
+    @JsonProperty("tag")
+    public Tag getTag() {
+        return tag;
+    }
+
+    @JsonProperty("tag")
+    public void setTag(Tag tag) {
+        this.tag = tag;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -104,7 +208,7 @@ public class Mastodon {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(account).append(application).append(mention).append(attachment).append(tag).append(status).toHashCode();
+        return new HashCodeBuilder().append(account).append(application).append(attachment).append(card).append(context).append(error).append(instance).append(mention).append(notification).append(relationship).append(report).append(results).append(status).append(tag).toHashCode();
     }
 
     @Override
@@ -116,7 +220,7 @@ public class Mastodon {
             return false;
         }
         Mastodon rhs = ((Mastodon) other);
-        return new EqualsBuilder().append(account, rhs.account).append(application, rhs.application).append(mention, rhs.mention).append(attachment, rhs.attachment).append(tag, rhs.tag).append(status, rhs.status).isEquals();
+        return new EqualsBuilder().append(account, rhs.account).append(application, rhs.application).append(attachment, rhs.attachment).append(card, rhs.card).append(context, rhs.context).append(error, rhs.error).append(instance, rhs.instance).append(mention, rhs.mention).append(notification, rhs.notification).append(relationship, rhs.relationship).append(report, rhs.report).append(results, rhs.results).append(status, rhs.status).append(tag, rhs.tag).isEquals();
     }
 
 }
