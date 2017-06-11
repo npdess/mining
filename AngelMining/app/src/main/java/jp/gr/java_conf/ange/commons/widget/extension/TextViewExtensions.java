@@ -22,7 +22,6 @@ public class TextViewExtensions {
 
     @BindingAdapter("localTime")
     public static void localTime(TextView textView, String time) {
-        Log.d("localTime", time);
         try {
             Date date = DateUtils.parseDate(time, DATE_FORMATS);
 
