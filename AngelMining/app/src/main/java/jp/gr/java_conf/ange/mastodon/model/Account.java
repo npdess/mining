@@ -13,39 +13,25 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
-    "username",
     "acct",
-    "display_name",
-    "locked",
-    "created_at",
-    "followers_count",
-    "following_count",
-    "statuses_count",
-    "note",
-    "url",
     "avatar",
     "avatar_static",
+    "created_at",
+    "display_name",
+    "followers_count",
+    "following_count",
     "header",
     "header_static",
-    "oauth_authentications"
+    "id",
+    "locked",
+    "note",
+    "oauth_authentications",
+    "statuses_count",
+    "url",
+    "username"
 })
 public class Account {
 
-    /**
-     * The ID of the account
-     * 
-     */
-    @JsonProperty("id")
-    @JsonPropertyDescription("The ID of the account")
-    private Integer id;
-    /**
-     * The username of the account
-     * 
-     */
-    @JsonProperty("username")
-    @JsonPropertyDescription("The username of the account")
-    private String username;
     /**
      * Equals username for local users, includes @domain for remote ones
      * 
@@ -53,62 +39,6 @@ public class Account {
     @JsonProperty("acct")
     @JsonPropertyDescription("Equals username for local users, includes @domain for remote ones")
     private String acct;
-    /**
-     * The account's display name
-     * 
-     */
-    @JsonProperty("display_name")
-    @JsonPropertyDescription("The account's display name")
-    private String displayName;
-    /**
-     * Boolean for when the account cannot be followed without waiting for approval first
-     * 
-     */
-    @JsonProperty("locked")
-    @JsonPropertyDescription("Boolean for when the account cannot be followed without waiting for approval first")
-    private Boolean locked;
-    /**
-     * The time the account was created
-     * 
-     */
-    @JsonProperty("created_at")
-    @JsonPropertyDescription("The time the account was created")
-    private String createdAt;
-    /**
-     * The number of followers for the account
-     * 
-     */
-    @JsonProperty("followers_count")
-    @JsonPropertyDescription("The number of followers for the account")
-    private Integer followersCount;
-    /**
-     * The number of accounts the given account is following
-     * 
-     */
-    @JsonProperty("following_count")
-    @JsonPropertyDescription("The number of accounts the given account is following")
-    private Integer followingCount;
-    /**
-     * The number of statuses the account has made
-     * 
-     */
-    @JsonProperty("statuses_count")
-    @JsonPropertyDescription("The number of statuses the account has made")
-    private Integer statusesCount;
-    /**
-     * Biography of user
-     * 
-     */
-    @JsonProperty("note")
-    @JsonPropertyDescription("Biography of user")
-    private String note;
-    /**
-     * URL of the user's profile page (can be remote)
-     * 
-     */
-    @JsonProperty("url")
-    @JsonPropertyDescription("URL of the user's profile page (can be remote)")
-    private String url;
     /**
      * URL to the avatar image
      * 
@@ -124,6 +54,34 @@ public class Account {
     @JsonPropertyDescription("URL to the avatar static image (gif)")
     private String avatarStatic;
     /**
+     * The time the account was created
+     * 
+     */
+    @JsonProperty("created_at")
+    @JsonPropertyDescription("The time the account was created")
+    private String createdAt;
+    /**
+     * The account's display name
+     * 
+     */
+    @JsonProperty("display_name")
+    @JsonPropertyDescription("The account's display name")
+    private String displayName;
+    /**
+     * The number of followers for the account
+     * 
+     */
+    @JsonProperty("followers_count")
+    @JsonPropertyDescription("The number of followers for the account")
+    private Integer followersCount;
+    /**
+     * The number of accounts the given account is following
+     * 
+     */
+    @JsonProperty("following_count")
+    @JsonPropertyDescription("The number of accounts the given account is following")
+    private Integer followingCount;
+    /**
      * URL to the header image
      * 
      */
@@ -138,48 +96,54 @@ public class Account {
     @JsonPropertyDescription("URL to the header static image (gif)")
     private String headerStatic;
     /**
+     * The ID of the accountおーけーぴーけー
+     * 
+     */
+    @JsonProperty("id")
+    @JsonPropertyDescription("The ID of the account\u304a\u30fc\u3051\u30fc\u3074\u30fc\u3051\u30fc")
+    private Integer id;
+    /**
+     * Boolean for when the account cannot be followed without waiting for approval first
+     * 
+     */
+    @JsonProperty("locked")
+    @JsonPropertyDescription("Boolean for when the account cannot be followed without waiting for approval first")
+    private Boolean locked;
+    /**
+     * Biography of user
+     * 
+     */
+    @JsonProperty("note")
+    @JsonPropertyDescription("Biography of user")
+    private String note;
+    /**
      * oauth
      * 
      */
     @JsonProperty("oauth_authentications")
     @JsonPropertyDescription("oauth")
     private List<Object> oauthAuthentications = new ArrayList<Object>();
-
     /**
-     * The ID of the account
+     * The number of statuses the account has made
      * 
      */
-    @JsonProperty("id")
-    public Integer getId() {
-        return id;
-    }
-
+    @JsonProperty("statuses_count")
+    @JsonPropertyDescription("The number of statuses the account has made")
+    private Integer statusesCount;
     /**
-     * The ID of the account
+     * URL of the user's profile page (can be remote)
      * 
      */
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @JsonProperty("url")
+    @JsonPropertyDescription("URL of the user's profile page (can be remote)")
+    private String url;
     /**
      * The username of the account
      * 
      */
     @JsonProperty("username")
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * The username of the account
-     * 
-     */
-    @JsonProperty("username")
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    @JsonPropertyDescription("The username of the account")
+    private String username;
 
     /**
      * Equals username for local users, includes @domain for remote ones
@@ -197,150 +161,6 @@ public class Account {
     @JsonProperty("acct")
     public void setAcct(String acct) {
         this.acct = acct;
-    }
-
-    /**
-     * The account's display name
-     * 
-     */
-    @JsonProperty("display_name")
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    /**
-     * The account's display name
-     * 
-     */
-    @JsonProperty("display_name")
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    /**
-     * Boolean for when the account cannot be followed without waiting for approval first
-     * 
-     */
-    @JsonProperty("locked")
-    public Boolean getLocked() {
-        return locked;
-    }
-
-    /**
-     * Boolean for when the account cannot be followed without waiting for approval first
-     * 
-     */
-    @JsonProperty("locked")
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
-    }
-
-    /**
-     * The time the account was created
-     * 
-     */
-    @JsonProperty("created_at")
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    /**
-     * The time the account was created
-     * 
-     */
-    @JsonProperty("created_at")
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    /**
-     * The number of followers for the account
-     * 
-     */
-    @JsonProperty("followers_count")
-    public Integer getFollowersCount() {
-        return followersCount;
-    }
-
-    /**
-     * The number of followers for the account
-     * 
-     */
-    @JsonProperty("followers_count")
-    public void setFollowersCount(Integer followersCount) {
-        this.followersCount = followersCount;
-    }
-
-    /**
-     * The number of accounts the given account is following
-     * 
-     */
-    @JsonProperty("following_count")
-    public Integer getFollowingCount() {
-        return followingCount;
-    }
-
-    /**
-     * The number of accounts the given account is following
-     * 
-     */
-    @JsonProperty("following_count")
-    public void setFollowingCount(Integer followingCount) {
-        this.followingCount = followingCount;
-    }
-
-    /**
-     * The number of statuses the account has made
-     * 
-     */
-    @JsonProperty("statuses_count")
-    public Integer getStatusesCount() {
-        return statusesCount;
-    }
-
-    /**
-     * The number of statuses the account has made
-     * 
-     */
-    @JsonProperty("statuses_count")
-    public void setStatusesCount(Integer statusesCount) {
-        this.statusesCount = statusesCount;
-    }
-
-    /**
-     * Biography of user
-     * 
-     */
-    @JsonProperty("note")
-    public String getNote() {
-        return note;
-    }
-
-    /**
-     * Biography of user
-     * 
-     */
-    @JsonProperty("note")
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    /**
-     * URL of the user's profile page (can be remote)
-     * 
-     */
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    /**
-     * URL of the user's profile page (can be remote)
-     * 
-     */
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     /**
@@ -380,6 +200,78 @@ public class Account {
     }
 
     /**
+     * The time the account was created
+     * 
+     */
+    @JsonProperty("created_at")
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    /**
+     * The time the account was created
+     * 
+     */
+    @JsonProperty("created_at")
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    /**
+     * The account's display name
+     * 
+     */
+    @JsonProperty("display_name")
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    /**
+     * The account's display name
+     * 
+     */
+    @JsonProperty("display_name")
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    /**
+     * The number of followers for the account
+     * 
+     */
+    @JsonProperty("followers_count")
+    public Integer getFollowersCount() {
+        return followersCount;
+    }
+
+    /**
+     * The number of followers for the account
+     * 
+     */
+    @JsonProperty("followers_count")
+    public void setFollowersCount(Integer followersCount) {
+        this.followersCount = followersCount;
+    }
+
+    /**
+     * The number of accounts the given account is following
+     * 
+     */
+    @JsonProperty("following_count")
+    public Integer getFollowingCount() {
+        return followingCount;
+    }
+
+    /**
+     * The number of accounts the given account is following
+     * 
+     */
+    @JsonProperty("following_count")
+    public void setFollowingCount(Integer followingCount) {
+        this.followingCount = followingCount;
+    }
+
+    /**
      * URL to the header image
      * 
      */
@@ -416,6 +308,60 @@ public class Account {
     }
 
     /**
+     * The ID of the accountおーけーぴーけー
+     * 
+     */
+    @JsonProperty("id")
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * The ID of the accountおーけーぴーけー
+     * 
+     */
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * Boolean for when the account cannot be followed without waiting for approval first
+     * 
+     */
+    @JsonProperty("locked")
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    /**
+     * Boolean for when the account cannot be followed without waiting for approval first
+     * 
+     */
+    @JsonProperty("locked")
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
+    /**
+     * Biography of user
+     * 
+     */
+    @JsonProperty("note")
+    public String getNote() {
+        return note;
+    }
+
+    /**
+     * Biography of user
+     * 
+     */
+    @JsonProperty("note")
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    /**
      * oauth
      * 
      */
@@ -433,6 +379,60 @@ public class Account {
         this.oauthAuthentications = oauthAuthentications;
     }
 
+    /**
+     * The number of statuses the account has made
+     * 
+     */
+    @JsonProperty("statuses_count")
+    public Integer getStatusesCount() {
+        return statusesCount;
+    }
+
+    /**
+     * The number of statuses the account has made
+     * 
+     */
+    @JsonProperty("statuses_count")
+    public void setStatusesCount(Integer statusesCount) {
+        this.statusesCount = statusesCount;
+    }
+
+    /**
+     * URL of the user's profile page (can be remote)
+     * 
+     */
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * URL of the user's profile page (can be remote)
+     * 
+     */
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * The username of the account
+     * 
+     */
+    @JsonProperty("username")
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * The username of the account
+     * 
+     */
+    @JsonProperty("username")
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -440,7 +440,7 @@ public class Account {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(id).append(username).append(acct).append(displayName).append(locked).append(createdAt).append(followersCount).append(followingCount).append(statusesCount).append(note).append(url).append(avatar).append(avatarStatic).append(header).append(headerStatic).append(oauthAuthentications).toHashCode();
+        return new HashCodeBuilder().append(acct).append(avatar).append(avatarStatic).append(createdAt).append(displayName).append(followersCount).append(followingCount).append(header).append(headerStatic).append(id).append(locked).append(note).append(oauthAuthentications).append(statusesCount).append(url).append(username).toHashCode();
     }
 
     @Override
@@ -452,7 +452,7 @@ public class Account {
             return false;
         }
         Account rhs = ((Account) other);
-        return new EqualsBuilder().append(id, rhs.id).append(username, rhs.username).append(acct, rhs.acct).append(displayName, rhs.displayName).append(locked, rhs.locked).append(createdAt, rhs.createdAt).append(followersCount, rhs.followersCount).append(followingCount, rhs.followingCount).append(statusesCount, rhs.statusesCount).append(note, rhs.note).append(url, rhs.url).append(avatar, rhs.avatar).append(avatarStatic, rhs.avatarStatic).append(header, rhs.header).append(headerStatic, rhs.headerStatic).append(oauthAuthentications, rhs.oauthAuthentications).isEquals();
+        return new EqualsBuilder().append(acct, rhs.acct).append(avatar, rhs.avatar).append(avatarStatic, rhs.avatarStatic).append(createdAt, rhs.createdAt).append(displayName, rhs.displayName).append(followersCount, rhs.followersCount).append(followingCount, rhs.followingCount).append(header, rhs.header).append(headerStatic, rhs.headerStatic).append(id, rhs.id).append(locked, rhs.locked).append(note, rhs.note).append(oauthAuthentications, rhs.oauthAuthentications).append(statusesCount, rhs.statusesCount).append(url, rhs.url).append(username, rhs.username).isEquals();
     }
 
 }

@@ -13,11 +13,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @JsonPropertyOrder({
     "id",
     "meta",
-    "type",
-    "url",
-    "remote_url",
     "preview_url",
-    "text_url"
+    "remote_url",
+    "text_url",
+    "type",
+    "url"
 })
 public class Attachment {
 
@@ -29,12 +29,33 @@ public class Attachment {
     @JsonPropertyDescription("ID of the attachment")
     private String id;
     /**
-     * meta?
+     * width, height, size (width x height), aspect
      * 
      */
     @JsonProperty("meta")
-    @JsonPropertyDescription("meta?")
+    @JsonPropertyDescription("width, height, size (width x height), aspect")
     private Object meta;
+    /**
+     * URL of the preview image
+     * 
+     */
+    @JsonProperty("preview_url")
+    @JsonPropertyDescription("URL of the preview image")
+    private String previewUrl;
+    /**
+     * For remote images, the remote URL of the original image
+     * 
+     */
+    @JsonProperty("remote_url")
+    @JsonPropertyDescription("For remote images, the remote URL of the original image")
+    private String remoteUrl;
+    /**
+     * Shorter URL for the image, for insertion into text (only present on local images)
+     * 
+     */
+    @JsonProperty("text_url")
+    @JsonPropertyDescription("Shorter URL for the image, for insertion into text (only present on local images)")
+    private Object textUrl;
     /**
      * One of "image", "video", "gifv"
      * 
@@ -48,28 +69,7 @@ public class Attachment {
      */
     @JsonProperty("url")
     @JsonPropertyDescription("URL of the locally hosted version of the image")
-    private Object url;
-    /**
-     * For remote images, the remote URL of the original image
-     * 
-     */
-    @JsonProperty("remote_url")
-    @JsonPropertyDescription("For remote images, the remote URL of the original image")
-    private String remoteUrl;
-    /**
-     * URL of the preview image
-     * 
-     */
-    @JsonProperty("preview_url")
-    @JsonPropertyDescription("URL of the preview image")
-    private Object previewUrl;
-    /**
-     * Shorter URL for the image, for insertion into text (only present on local images)
-     * 
-     */
-    @JsonProperty("text_url")
-    @JsonPropertyDescription("Shorter URL for the image, for insertion into text (only present on local images)")
-    private String textUrl;
+    private String url;
 
     /**
      * ID of the attachment
@@ -90,7 +90,7 @@ public class Attachment {
     }
 
     /**
-     * meta?
+     * width, height, size (width x height), aspect
      * 
      */
     @JsonProperty("meta")
@@ -99,12 +99,66 @@ public class Attachment {
     }
 
     /**
-     * meta?
+     * width, height, size (width x height), aspect
      * 
      */
     @JsonProperty("meta")
     public void setMeta(Object meta) {
         this.meta = meta;
+    }
+
+    /**
+     * URL of the preview image
+     * 
+     */
+    @JsonProperty("preview_url")
+    public String getPreviewUrl() {
+        return previewUrl;
+    }
+
+    /**
+     * URL of the preview image
+     * 
+     */
+    @JsonProperty("preview_url")
+    public void setPreviewUrl(String previewUrl) {
+        this.previewUrl = previewUrl;
+    }
+
+    /**
+     * For remote images, the remote URL of the original image
+     * 
+     */
+    @JsonProperty("remote_url")
+    public String getRemoteUrl() {
+        return remoteUrl;
+    }
+
+    /**
+     * For remote images, the remote URL of the original image
+     * 
+     */
+    @JsonProperty("remote_url")
+    public void setRemoteUrl(String remoteUrl) {
+        this.remoteUrl = remoteUrl;
+    }
+
+    /**
+     * Shorter URL for the image, for insertion into text (only present on local images)
+     * 
+     */
+    @JsonProperty("text_url")
+    public Object getTextUrl() {
+        return textUrl;
+    }
+
+    /**
+     * Shorter URL for the image, for insertion into text (only present on local images)
+     * 
+     */
+    @JsonProperty("text_url")
+    public void setTextUrl(Object textUrl) {
+        this.textUrl = textUrl;
     }
 
     /**
@@ -130,7 +184,7 @@ public class Attachment {
      * 
      */
     @JsonProperty("url")
-    public Object getUrl() {
+    public String getUrl() {
         return url;
     }
 
@@ -139,62 +193,8 @@ public class Attachment {
      * 
      */
     @JsonProperty("url")
-    public void setUrl(Object url) {
+    public void setUrl(String url) {
         this.url = url;
-    }
-
-    /**
-     * For remote images, the remote URL of the original image
-     * 
-     */
-    @JsonProperty("remote_url")
-    public String getRemoteUrl() {
-        return remoteUrl;
-    }
-
-    /**
-     * For remote images, the remote URL of the original image
-     * 
-     */
-    @JsonProperty("remote_url")
-    public void setRemoteUrl(String remoteUrl) {
-        this.remoteUrl = remoteUrl;
-    }
-
-    /**
-     * URL of the preview image
-     * 
-     */
-    @JsonProperty("preview_url")
-    public Object getPreviewUrl() {
-        return previewUrl;
-    }
-
-    /**
-     * URL of the preview image
-     * 
-     */
-    @JsonProperty("preview_url")
-    public void setPreviewUrl(Object previewUrl) {
-        this.previewUrl = previewUrl;
-    }
-
-    /**
-     * Shorter URL for the image, for insertion into text (only present on local images)
-     * 
-     */
-    @JsonProperty("text_url")
-    public String getTextUrl() {
-        return textUrl;
-    }
-
-    /**
-     * Shorter URL for the image, for insertion into text (only present on local images)
-     * 
-     */
-    @JsonProperty("text_url")
-    public void setTextUrl(String textUrl) {
-        this.textUrl = textUrl;
     }
 
     @Override
@@ -204,7 +204,7 @@ public class Attachment {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(id).append(meta).append(type).append(url).append(remoteUrl).append(previewUrl).append(textUrl).toHashCode();
+        return new HashCodeBuilder().append(id).append(meta).append(previewUrl).append(remoteUrl).append(textUrl).append(type).append(url).toHashCode();
     }
 
     @Override
@@ -216,7 +216,7 @@ public class Attachment {
             return false;
         }
         Attachment rhs = ((Attachment) other);
-        return new EqualsBuilder().append(id, rhs.id).append(meta, rhs.meta).append(type, rhs.type).append(url, rhs.url).append(remoteUrl, rhs.remoteUrl).append(previewUrl, rhs.previewUrl).append(textUrl, rhs.textUrl).isEquals();
+        return new EqualsBuilder().append(id, rhs.id).append(meta, rhs.meta).append(previewUrl, rhs.previewUrl).append(remoteUrl, rhs.remoteUrl).append(textUrl, rhs.textUrl).append(type, rhs.type).append(url, rhs.url).isEquals();
     }
 
 }
